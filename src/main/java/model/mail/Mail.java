@@ -1,6 +1,6 @@
 package model.mail;
 
-public class Message {
+public class Mail {
     private String from;
     private String[] to = new String[0];
     private String[] cc = new String[0];
