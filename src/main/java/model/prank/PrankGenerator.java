@@ -41,7 +41,7 @@ public class PrankGenerator {
         int numberOfVictims = configManager.getVictims().size();
 
         if (numberOfVictims / numberOfGroups < 3) {
-            throw new RuntimeException("Minimum size for a group is 3");
+            throw new RuntimeException("Minimum size for a group is 3 people");
         }
 
         List<Group> groups = generateGroups(configManager.getVictims(), numberOfGroups);
