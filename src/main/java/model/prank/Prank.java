@@ -1,74 +1,140 @@
 package model.prank;
 
-import model.mail.Mail;
+import model.mail.Message;
 import model.mail.Person;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+/**
+ * Prank
+ *
+ * @author Olivier Liechti, Alexandra Cerottini, Miguel Do Vale Lopes
+ */
 public class Prank {
-    private Person victimeSender;
-    private final List<Person> victimeRecipents = new ArrayList<>();
-    private final List<Person> witnessRecipients = new ArrayList<>();
+    private Person sender;
+    private final List<Person> victims = new ArrayList<>();
+    private final List<String> addressesToCc = new ArrayList<>();
     private String message;
 
-    public Person getVictimSender() {
-        return victimSender;
+    /**
+     * Get sender
+     *
+     * @return sender
+     */
+    public Person getSender() {
+        return sender;
     }
 
-    void setVictimSender(Person victim) {
-        this.victimSender = victim;
+    /**
+     * Set sender
+     *
+     * @param sender
+     */
+    void setSender(Person sender) {
+        this.sender = sender;
     }
 
+    /**
+     * Get message
+     *
+     * @return Message
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Set message
+     *
+     * @param message
+     */
     void setMessage(String message) {
         this.message = message;
     }
 
-    void addVictimRecipients(List<Person> victims) {
-        victimRecipients.addAll(victims);
+    /**
+     * Add victim to a list of victims
+     *
+     * @param victims
+     */
+    void addVictims(List<Person> victims) {
+        this.victims.addAll(victims);
     }
 
-    void addWitnessRecipients(List<Person> witnesses) {
-        witnessRecipients.addAll(witnesses);
+    /**
+     * Add addresses to a list of cc
+     *
+     * @param addresses
+     */
+    void addAddressesToCc(List<String> addresses) {
+        this.addressesToCc.addAll(addresses);
     }
 
-    public List<Person> getVictimRecipients() {
-        return new ArrayList<>(victimRecipients);
+    /**
+     * Get victims
+     *
+     * @return victims
+     */
+    public List<Person> getVictims() {
+        return new ArrayList<>(victims);
     }
 
-    public List<Person> getWitnessRecipients() {
-        return new ArrayList<>(witnessRecipients);
+    /**
+     * Get addresses to cc
+     *
+     * @return addresses to cc
+     */
+    public List<String> getAddressesToCc() {
+        return new ArrayList<>(addressesToCc);
     }
 
-    public Mail generalMailMessage() {
-        Mail message = new Mail();
-        message.setFrom(victimSender.getAddress());
+    /**
+     * Generate Message corresponding to the Prank
+     *
+     * @return the pranked message
+     */
+    public Message generateMessage() {
 
-        String[] to = victimRecipients
-                .stream()
-                .map(Person::getAddress)
-                .collect(Collectors.toList())
-                .toArray(new String[]{});
-        message.setTo(to);
+        // Check sender is not null
+        if (sender == null) {
+            throw new NullPointerException("sender should not be null to generate a Message");
+        }
 
-        String[] cc = witnessRecipients
-                .stream()
-                .map(Person::getAddress)
-                .collect(Collectors.toList())
-                .toArray(new String[]{});
-        message.setCc(cc);
+        Message message = new Message();
 
-        message.setBody(this.message + "\r\n" + victimSender.getFirstName() + " " + victimSender.getLastName());
+        // Set from
+        message.setFrom(sender.getAddress());
+
+        // Set to
+        ArrayList<String> toList = new ArrayList<>();
+        for (Person p : victims) {
+            toList.add(p.getAddress());
+        }
+        message.setTo(toList);
+
+        // Set cc
+        message.setCc(addressesToCc);
+
+        // Get subject and body
+        String subject = "-";
+        String body = this.message;
+        if (this.message != null) {
+            String[] data = this.message.split("\r\n", 2);
+            if (data[0].startsWith("Subject: ")) {
+                subject = data[0].replace("Subject: ", "");
+                body = data[1];
+            }
+        }
+
+        // Set subject and (body + sender signature)
+        message.setSubject(subject);
+        message.setBody(body + "\r\n" + sender.getFirstName() + " " + sender.getLastName());
 
         return message;
     }
-
-
-
-
 
 }
