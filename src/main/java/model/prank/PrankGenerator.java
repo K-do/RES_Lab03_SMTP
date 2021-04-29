@@ -37,7 +37,7 @@ public class PrankGenerator {
         List<String> messages = configManager.getMessages();
         Collections.shuffle(messages);
         int messageIndex = 0;
-        int numberOfGroups = configManager.getNumberOfGroups();
+        int numberOfGroups = configManager.getNbGroups();
         int numberOfVictims = configManager.getVictims().size();
 
         if (numberOfVictims / numberOfGroups < 3) {

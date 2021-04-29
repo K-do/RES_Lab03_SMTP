@@ -1,16 +1,17 @@
 package smtp;
 
-import model.mail.Message;
+import model.mail.Mail;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Implementation of SMTP protocol
@@ -18,9 +19,8 @@ import java.util.logging.Logger;
  * @author Olivier Liechti, Alexandra Cerottini, Miguel Do Vale Lopes
  */
 public class SmtpClient {
-    private static final Logger LOG = Logger.getLogger(SmtpClient.class.getName());
-    private final String smtpServerAddress;
-    private final int smtpServerPort;
+    private final String servAddress;
+    private final int servPort;
 
     /**
      * Constructor
@@ -29,113 +29,58 @@ public class SmtpClient {
      * @param port port number of smtp server
      */
     public SmtpClient(String address, int port) {
-        this.smtpServerAddress = address;
-        this.smtpServerPort = port;
+        this.servAddress = address;
+        this.servPort = port;
     }
 
-    public void sendMessage(Message message) throws IOException {
-        LOG.info("Sending message via SMTP");
-        Socket socket = new Socket(smtpServerAddress, smtpServerPort);
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+    /**
+     * Send mails to the server
+     * @param mails
+     * @throws IOException
+     */
+    public void send(List<Mail> mails) throws IOException {
+        Socket socket = new Socket(servAddress, servPort);
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8));
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-
-        // Get serv infos
-        String line = reader.readLine();
-        LOG.info(line);
-        writer.printf("EHLO localhost\r\n");
-        line = reader.readLine();
-        LOG.info(line);
-
-        // Get smtp server configuration details
-        if(!line.startsWith("250")) {
-            throw new IOException("SMTP error: " + line);
-        }
-        while(line.startsWith("250-")) {
-            line = reader.readLine();
-            LOG.info(line);
-        }
-
-        // Send sender
-        writer.write("MAIL FROM:");
-        writer.write(message.getFrom());
-        writer.write("\r\n");
+        writer.print("EHLO TEST\r\n");
         writer.flush();
-        line = reader.readLine();
-        LOG.info(line);
+        do{
+            System.out.println(">" +reader.readLine());
+        } while(!reader.equals("250 OK"));
+        System.out.println(">" + reader.readLine());
 
-        // Send victims
-        for(String to : message.getTo()) {
-            writer.write("RCPT TO:");
-            writer.write(to);
-            writer.write("\r\n");
+        for(Mail mail : mails){
+            writer.print("MAIL FROM: " + mail.getFrom() + "\r\n");
             writer.flush();
-            line = reader.readLine();
-            LOG.info(line);
-        }
-
-        // Send witnesses
-        for(String to : message.getCc()) {
-            writer.write("RCPT TO:");
-            writer.write(to);
-            writer.write("\r\n");
+            System.out.println(">" + reader.readLine());
+            for(String to : mail.getTo()){
+                writer.print("RCPT TO: " + to + "\r\n");
+                writer.flush();
+                System.out.println(">" + reader.readLine());
+            }
+            for(String cc : mail.getCc()){
+                writer.print("RCPT TO: " + cc + "\r\n");
+                writer.flush();
+                System.out.println(">" + reader.readLine());
+            }
+            writer.print("DATA\r\n");
             writer.flush();
-            line = reader.readLine();
-            LOG.info(line);
+            System.out.println(">" + reader.readLine());
+            writer.print("From: " + mail.getFrom() + "\r\n");
+            writer.print("To: " + mail.getTo().get(0));
+            for(String to : mail.getTo()){
+                writer.print(",",)
+            }
+
+
         }
 
-        // Data
-        writer.write("DATA");
-        writer.write("\r\n");
-        writer.flush();
-        line = reader.readLine();
-        LOG.info(line);
 
-        // Content-type header
-        writer.write("Content-Type: text/plain; charset=\"utf-8\"\r\n");
 
-        // From header
-        writer.write("From: " + message.getFrom() + "\r\n");
 
-        // To header
-        List<String> to = message.getTo();
-        writer.write("To: " + to.get(0));
-        for(int i = 1; i < to.size(); i++) {
-            writer.write(", " + to.get(i));
-        }
-        writer.write("\r\n");
 
-        // Cc header
-        List<String> cc = message.getCc();
-        writer.write("Cc: " + cc.get(0));
-        for(int i = 1; i < cc.size(); i++) {
-            writer.write(", " + cc.get(i));
-        }
-        writer.write("\r\n");
-        writer.flush();
 
-        // Encode subject
-        Base64.Encoder encoder = Base64.getEncoder();
-        message.setSubject("=?utf-8?B?" + encoder.encodeToString(message.getSubject().getBytes(StandardCharsets.UTF_8)) + "?=");
 
-        // Subject header
-        writer.write("Subject: " + message.getSubject());
-        writer.write("\r\n");
-        writer.write("\r\n");
 
-        // Body
-        writer.write(message.getBody());
-        writer.write("\r\n.\r\n");
-        writer.flush();
-        line = reader.readLine();
-        LOG.info(line);
-
-        // Quit smtp serv
-        writer.write("QUIT\r\n");
-        writer.flush();
-
-        // Clean
-        writer.close();
-        reader.close();
-        socket.close();
     }
 }

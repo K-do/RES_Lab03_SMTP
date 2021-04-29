@@ -1,13 +1,10 @@
 package model.prank;
 
-import model.mail.Message;
+import model.mail.Mail;
 import model.mail.Person;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Prank
@@ -97,14 +94,14 @@ public class Prank {
      *
      * @return the pranked message
      */
-    public Message generateMessage() {
+    public Mail generateMessage() {
 
         // Check sender is not null
         if (sender == null) {
             throw new NullPointerException("sender should not be null to generate a Message");
         }
 
-        Message message = new Message();
+        Mail message = new Mail();
 
         // Set from
         message.setFrom(sender.getAddress());

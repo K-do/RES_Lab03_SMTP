@@ -19,11 +19,16 @@ import java.util.Properties;
  * @author Olivier Liechti, Alexandra Cerottini, Miguel Do Vale Lopes
  */
 public class ConfigManager {
+    private final static String CONFIG_FILENAME = "config.properties";
+    private final static String VICTIMS_FILENAME = "victims.json";
+    private final static String MESSAGES_FILENAME = "messages.utf8";
+    private final static String MESSAGE_SEPARATOR = "==";
+
     private String smtpServerAddress;
     private int smtpServerPort;
-    private int numberOfGroups;
-    private final List<Person> victims;
-    private final List<String> messages;
+    private int nbGroups;
+    private List<Person> victims;
+    private List<String> messages;
     private List<String> addressesToCC;
 
     /**
@@ -31,10 +36,10 @@ public class ConfigManager {
      *
      * @throws IOException - if config files failed to open/read
      */
-    public ConfigManager() throws IOException {
-        victims = loadPersonsFromFile();
-        messages = loadMessagesFromFile();
-        loadProperties();
+    public ConfigManager(String dirPath) throws IOException {
+        loadProperties(dirPath + CONFIG_FILENAME);
+        loadVictims(dirPath + VICTIMS_FILENAME);
+        loadMessages(dirPath + MESSAGES_FILENAME);
     }
 
     /**
@@ -42,23 +47,23 @@ public class ConfigManager {
      *
      * @throws IOException - If file could not be open/read
      */
-    private void loadProperties() throws IOException {
-
+    private void loadProperties(String filename) throws IOException {
         // Load properties file
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                new FileInputStream("./config/config.properties"), StandardCharsets.UTF_8));
         Properties properties = new Properties();
-        properties.load(in);
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(
+                new FileInputStream(filename), StandardCharsets.UTF_8))) {
+            properties.load(in);
+        }
 
-        // Get server address & port
+        // Get server address & port, throws exception if null
         smtpServerAddress = properties.getProperty("smtpServerAddress");
-        if(smtpServerAddress == null){
+        if (smtpServerAddress == null) {
             throw new RuntimeException("smtpServerAddress should not be empty");
         }
         smtpServerPort = Integer.parseInt(properties.getProperty("smtpServerPort"));
 
-        // Get number of groups
-        numberOfGroups = Integer.parseInt(properties.getProperty("numberOfGroups"));
+        // Get number of groups, throws exception if null
+        nbGroups = Integer.parseInt(properties.getProperty("numberOfGroups"));
 
         // Get addresses to cc
         String[] witnesses = properties.getProperty("witnessesToCC").split(",");
@@ -68,46 +73,38 @@ public class ConfigManager {
     /**
      * Load Persons from a json file
      *
-     * @return a list of Persons
      * @throws IOException - If file could not be open/read
      */
-    private List<Person> loadPersonsFromFile() throws IOException {
+    private void loadVictims(String filename) throws IOException {
         Gson gson = new Gson();
-        List<Person> result;
         try (BufferedReader in = new BufferedReader(new InputStreamReader(
-                new FileInputStream("./config/victims.json"), StandardCharsets.UTF_8))) {
-
+                new FileInputStream(filename), StandardCharsets.UTF_8))) {
             // Read json file with Gson
-            result = new ArrayList<>(Arrays.asList(gson.fromJson(in, Person[].class)));
+            victims = new ArrayList<>(Arrays.asList(gson.fromJson(in, Person[].class)));
         }
-        return result;
     }
 
     /**
-     * Load messages from utf8 file
+     * Load messages from utf8 file, each message separated by separator
      *
-     * @return a list of string corresponding to the messages
      * @throws IOException - If file could not be open/read
      */
-    private List<String> loadMessagesFromFile() throws IOException {
-        List<String> result;
+    private void loadMessages(String filename) throws IOException {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(
-                new FileInputStream("./config/messages.utf8"), StandardCharsets.UTF_8))) {
-
-            // Read each message separated by "=="
-            result = new ArrayList<>();
+                new FileInputStream(filename), StandardCharsets.UTF_8))) {
+            // Read each message separated by separator
+            messages = new ArrayList<>();
             String line;
             while ((line = in.readLine()) != null) {
                 StringBuilder body = new StringBuilder();
-                while ((line != null) && (!line.equals("=="))) {
+                while ((line != null) && (!line.equals(MESSAGE_SEPARATOR))) {
                     body.append(line);
                     body.append("\r\n");
                     line = in.readLine();
                 }
-                result.add(body.toString());
+                messages.add(body.toString());
             }
         }
-        return result;
     }
 
     /**
@@ -158,9 +155,9 @@ public class ConfigManager {
     /**
      * Get the number of groups
      *
-     * @return an integer corresponding to the number of groups to prank
+     * @return An integer corresponding to the number of groups to prank
      */
-    public int getNumberOfGroups() {
-        return numberOfGroups;
+    public int getNbGroups() {
+        return nbGroups;
     }
 }

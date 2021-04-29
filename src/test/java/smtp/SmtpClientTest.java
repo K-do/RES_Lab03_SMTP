@@ -17,7 +17,7 @@ public class SmtpClientTest {
 
         List<Prank> pranks = new PrankGenerator().generatePranks();
 
-        client.sendMessage(pranks.get(0).generateMessage());
+        client.send(pranks.get(0).generateMessage());
 
     }
 

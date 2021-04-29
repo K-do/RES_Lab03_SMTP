@@ -22,7 +22,7 @@ public class MailRobot {
             ConfigManager configManager = new ConfigManager();
             for (Prank p : pranks) {
                 SmtpClient client = new SmtpClient(configManager.getSmtpServerAddress(), configManager.getSmtpServerPort());
-                client.sendMessage(p.generateMessage());
+                client.send(p.generateMessage());
             }
         } catch (IOException e) {
             e.printStackTrace();
