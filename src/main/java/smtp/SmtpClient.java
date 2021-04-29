@@ -36,7 +36,7 @@ public class SmtpClient {
      * Send mails to the server
      *
      * @param mails
-     * @throws IOException
+     * @throws IOException - If there is a SMTP error
      */
     public void send(List<Mail> mails) throws IOException {
         Socket socket = new Socket(servAddress, servPort);

@@ -94,7 +94,7 @@ public class PrankGenerator {
      * @return a list of random groups
      */
     private List<Group> generateGroups() {
-        // Get all victims and nb of groups
+        // Get all victims and number of groups
         List<Person> victims = configManager.getVictims();
         int nbGroups = configManager.getNbGroups();
 

@@ -47,7 +47,7 @@ public class Mail {
     /**
      * Get from
      *
-     * @return from
+     * @return the mail of the sender
      */
     public String getFrom() {
 
@@ -57,7 +57,7 @@ public class Mail {
     /**
      * Get to
      *
-     * @return to
+     * @return mails of victims
      */
     public List<String> getTo() {
 
@@ -67,7 +67,7 @@ public class Mail {
     /**
      * Get cc
      *
-     * @return cc
+     * @return mails to cc
      */
     public List<String> getCc() {
         return cc;
@@ -76,7 +76,7 @@ public class Mail {
     /**
      * Get subject
      *
-     * @return subject
+     * @return subject of the mail
      */
     public String getSubject() {
         return subject;
@@ -85,7 +85,7 @@ public class Mail {
     /**
      * Get content type
      *
-     * @return content type
+     * @return content-type of the mail
      */
     public String getContentType() {
         return contentType;
@@ -94,7 +94,7 @@ public class Mail {
     /**
      * Get body
      *
-     * @return body
+     * @return body of the mail
      */
     public String getBody() {
         return body;

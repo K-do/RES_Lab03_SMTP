@@ -122,7 +122,7 @@ public class ConfigManager {
     /**
      * Get messages
      *
-     * @return A list of Messages corresponding to the victims
+     * @return A list of Messages corresponding to the message to send
      */
     public List<String> getMessages() {
         return new ArrayList<>(messages);

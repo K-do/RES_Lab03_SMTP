@@ -1,60 +1,69 @@
 [
     {
-        "firstName":"Alexandra",
-        "lastName":"Cerottini",
-        "address":"alexandra.cerottini@heig-vd.ch"
+        "firstName":"Andrea",
+        "lastName":"Fanti",
+        "address":"andrea.fanti@test.com"
     },
 
     {
-        "firstName":"Miguel",
-        "lastName":"Do Vale Lopes",
-        "address":"miguel.dovalelopes@heig-vd.ch"
+        "firstName":"Giulia",
+        "lastName":"Giordano",
+        "address":"gg.milano@test.com"
     },
 
     {
-        "firstName":"Fiona",
-        "lastName":"Gamboni",
-        "address":"fiona.gamboni@heig-vd.ch"
+        "firstName":"Agnese",
+        "lastName":"Tiberi",
+        "address":"at.35@test.com"
     },
 
     {
-        "firstName":"Rebecca",
-        "lastName":"Tevaearai",
-        "address":"rebecca.tevaearai@heig-vd.ch"
+        "firstName":"Lorenzo",
+        "lastName":"Lazzarini",
+        "address":"lorenzo.lazzarini@test.com"
     },
 
     {
-        "firstName":"Leonard",
-        "lastName":"Besseau",
-        "address":"leonard.besseau@heig-vd.ch"
+        "firstName":"Elisa",
+        "lastName":"Russo",
+        "address":"elisa.russo@test.com"
     },
 
     {
-        "firstName":"Nicolas",
-        "lastName":"Ogi",
-        "address":"nicolas.ogi@heig-vd.ch"
+        "firstName":"Riccardo",
+        "lastName":"Bonvegna",
+        "address":"riccardo.bonvegna@test.com"
     },
 
     {
         "firstName":"Marco",
-        "lastName":"Maziero",
-        "address":"marco.maziero@heig-vd.ch"
+        "lastName":"Sardoni",
+        "address":"marco.sardoni@test.com"
     },
 
     {
-        "firstName":"Gaetan",
-        "lastName":"Zwick",
-        "address":"gaetan.zwick@heig-vd.ch"
+        "firstName":"Gabriel",
+        "lastName":"Kidane",
+        "address":"gabriel.kidane@test.com"
     },
 
     {
-        "firstName":"Milan",
-        "lastName":"Augstburger",
-        "address":"milan.augstburger@heig-vd.ch"
+        "firstName":"Alba",
+        "lastName":"Patrizi",
+        "address":"alba.patrizi@test.com"
+    },
+
+    {
+        "firstName":"Teresa",
+        "lastName":"Maraldi",
+        "address":"teresa.maraldi@test.com"
+    },
+    {
+        "firstName":"Enrico",
+        "lastName":"Sandri",
+        "address":"enrico.sandri@test.com"
     }
-
 ]
-
 
 
 
