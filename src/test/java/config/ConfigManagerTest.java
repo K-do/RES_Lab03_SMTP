@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ConfigManagerTest {
-
+/*
     @Test
     public void loadPersonFromfileShouldWork() {
 
@@ -36,5 +36,7 @@ public class ConfigManagerTest {
 
     }
 
+
+ */
 
 }

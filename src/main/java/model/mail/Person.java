@@ -13,9 +13,9 @@ public class Person {
     /**
      * Constructor
      *
-     * @param firstName
-     * @param lastName
-     * @param address
+     * @param firstName the first name of a person
+     * @param lastName  last name of a person
+     * @param address   email address of a person
      */
     public Person(String firstName, String lastName, String address) {
         this.firstName = firstName;
@@ -43,6 +43,7 @@ public class Person {
 
     /**
      * Get address
+     *
      * @return the address
      */
     public String getAddress() {

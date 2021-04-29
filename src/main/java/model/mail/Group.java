@@ -4,28 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Group of victims
+ * Group of a prank
  *
- * @author Olivier Liechti
+ * @author Alexandra Cerottini, Miguel Do Vale Lopes
  */
 public class Group {
-    private final List<Person> members = new ArrayList<>();
+    private final Person sender;
+    private final List<Person> recipients;
 
     /**
-     * Add a Person to the group
+     * Constructor
      *
-     * @param person
+     * @param sender     a Person who will send the prank
+     * @param recipients List<Person> that will receive the prank
      */
-    public void addMember(Person person){
-        members.add(person);
+    public Group(Person sender, List<Person> recipients) {
+        if (sender == null) {
+            throw new NullPointerException("A sender is required !");
+        }
+        if (recipients == null || recipients.size() < 2) {
+            throw new NullPointerException("A group must contain at least 2 recipients");
+        }
+
+        this.sender = sender;
+        this.recipients = recipients;
     }
 
     /**
-     * Get members
+     * Get sender
      *
-     * @return Members of the group
+     * @return a Person corresponding to the group sender
      */
-    public List<Person> getMembers() {
-        return new ArrayList<>(members);
+    public Person getSender() {
+        return sender;
+    }
+
+    /**
+     * Get recipients
+     *
+     * @return Recipients of the group
+     */
+    public List<Person> getRecipients() {
+        return new ArrayList<>(recipients);
     }
 }

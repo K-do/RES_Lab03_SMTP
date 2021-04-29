@@ -33,7 +33,26 @@
         "firstName":"Nicolas",
         "lastName":"Ogi",
         "address":"nicolas.ogi@heig-vd.ch"
+    },
+
+    {
+        "firstName":"Marco",
+        "lastName":"Maziero",
+        "address":"marco.maziero@heig-vd.ch"
+    },
+
+    {
+        "firstName":"Gaetan",
+        "lastName":"Zwick",
+        "address":"gaetan.zwick@heig-vd.ch"
+    },
+
+    {
+        "firstName":"Milan",
+        "lastName":"Augstburger",
+        "address":"milan.augstburger@heig-vd.ch"
     }
+
 ]
 
 

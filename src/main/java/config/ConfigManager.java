@@ -37,9 +37,9 @@ public class ConfigManager {
      * @throws IOException - if config files failed to open/read
      */
     public ConfigManager(String dirPath) throws IOException {
-        loadProperties(dirPath + CONFIG_FILENAME);
-        loadVictims(dirPath + VICTIMS_FILENAME);
-        loadMessages(dirPath + MESSAGES_FILENAME);
+        loadProperties(dirPath + "/" + CONFIG_FILENAME);
+        loadVictims(dirPath + "/" + VICTIMS_FILENAME);
+        loadMessages(dirPath + "/" + MESSAGES_FILENAME);
     }
 
     /**
@@ -113,7 +113,7 @@ public class ConfigManager {
      * @return A list of Person corresponding to the victims
      */
     public List<Person> getVictims() {
-        return victims;
+        return new ArrayList<>(victims);
     }
 
     /**
@@ -122,7 +122,7 @@ public class ConfigManager {
      * @return A list of Messages corresponding to the victims
      */
     public List<String> getMessages() {
-        return messages;
+        return new ArrayList<>(messages);
     }
 
     /**
@@ -131,7 +131,7 @@ public class ConfigManager {
      * @return A list of String corresponding to the addresses to cc
      */
     public List<String> getAddressesToCC() {
-        return addressesToCC;
+        return new ArrayList<>(addressesToCC);
     }
 
     /**

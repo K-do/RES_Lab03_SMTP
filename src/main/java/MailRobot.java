@@ -1,5 +1,5 @@
 import config.ConfigManager;
-import model.prank.Prank;
+import model.mail.Mail;
 import model.prank.PrankGenerator;
 import smtp.SmtpClient;
 
@@ -15,15 +15,15 @@ public class MailRobot {
 
     public static void main(String[] args) {
         try {
-            // Generate the pranks
-            List<Prank> pranks = new PrankGenerator().generatePranks();
+            ConfigManager configManager = new ConfigManager("./config");
 
-            // Send each prank to the smtpServer
-            ConfigManager configManager = new ConfigManager();
-            for (Prank p : pranks) {
-                SmtpClient client = new SmtpClient(configManager.getSmtpServerAddress(), configManager.getSmtpServerPort());
-                client.send(p.generateMessage());
-            }
+            // Generate the pranks
+            List<Mail> pranks = new PrankGenerator(configManager).generateMails();
+
+            // Send the pranks
+            SmtpClient client = new SmtpClient(configManager.getSmtpServerAddress(), configManager.getSmtpServerPort());
+            client.send(pranks);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

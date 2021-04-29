@@ -18,12 +18,13 @@ public class Mail {
 
     /**
      * Constructor
-     * @param from String address
-     * @param to List<String> addresses
-     * @param cc List<String> addresses
-     * @param subject String mail subject
+     *
+     * @param from        String address
+     * @param to          List<String> addresses
+     * @param cc          List<String> addresses
+     * @param subject     String mail subject
      * @param contentType String content type of the body
-     * @param body String body of the mail
+     * @param body        String body of the mail
      */
     public Mail(String from, List<String> to, List<String> cc, String subject, String contentType, String body) {
         // Check mandatory parameters
@@ -32,9 +33,6 @@ public class Mail {
         }
         if (to == null || to.size() == 0) {
             throw new NullPointerException("At least one 'to' is required !");
-        }
-        if (subject == null || subject.isEmpty()) {
-            throw new NullPointerException("Subject is required and should not be empty !");
         }
 
         this.from = from;
@@ -52,6 +50,7 @@ public class Mail {
      * @return from
      */
     public String getFrom() {
+
         return from;
     }
 
@@ -61,6 +60,7 @@ public class Mail {
      * @return to
      */
     public List<String> getTo() {
+
         return to;
     }
 
