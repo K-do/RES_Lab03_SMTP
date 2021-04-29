@@ -57,13 +57,16 @@ public class ConfigManager {
 
         // Get server address & port, throws exception if null
         smtpServerAddress = properties.getProperty("smtpServerAddress");
-        if (smtpServerAddress == null) {
-            throw new RuntimeException("smtpServerAddress should not be empty");
+        if (smtpServerAddress == null || smtpServerAddress.isEmpty()) {
+            throw new RuntimeException("smtpServerAddress should not be empty !");
         }
         smtpServerPort = Integer.parseInt(properties.getProperty("smtpServerPort"));
 
-        // Get number of groups, throws exception if null
+        // Get number of groups, throws exception if null or <= 0
         nbGroups = Integer.parseInt(properties.getProperty("numberOfGroups"));
+        if (nbGroups <= 0) {
+            throw new RuntimeException("numberOfgroups should be > 0 !");
+        }
 
         // Get addresses to cc
         String[] witnesses = properties.getProperty("witnessesToCC").split(",");

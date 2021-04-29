@@ -28,7 +28,7 @@ public class Mail {
      */
     public Mail(String from, List<String> to, List<String> cc, String subject, String contentType, String body) {
         // Check mandatory parameters
-        if (from == null) {
+        if (from == null || from.isEmpty()) {
             throw new NullPointerException("From is required !");
         }
         if (to == null || to.size() == 0) {

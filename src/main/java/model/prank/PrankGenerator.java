@@ -24,6 +24,9 @@ public class PrankGenerator {
      * @param config ConfigManager of the pranks
      */
     public PrankGenerator(ConfigManager config) {
+        if (config == null) {
+            throw new NullPointerException("Please provide a ConfigManager !");
+        }
         this.configManager = config;
     }
 

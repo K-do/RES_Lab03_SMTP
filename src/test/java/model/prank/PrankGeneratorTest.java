@@ -1,33 +1,128 @@
 package model.prank;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import config.ConfigManager;
+import model.mail.Mail;
+import model.mail.Person;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrankGeneratorTest {
-/*
-    @Test
-    public void ItShouldGeneratePranks() {
 
-        try {
-            PrankGenerator pg = new PrankGenerator();
-            List<Prank> pranks = pg.generateMails();
+    private final static String dirPath = "./src/test/tmpConfig";
 
-            for(Prank p : pranks) {
-                System.out.println(p.getSender().getAddress());
-                System.out.println(p.getMessage());
-            }
+    @BeforeAll
+    public static void setUpConfig() {
 
+        // Create tmp config dir
+        File directory = new File(dirPath);
+        directory.mkdirs();
 
-        } catch(IOException e) {
+        // Create victims.json
+        List<Person> victims = new ArrayList<>();
+        for (int i = 0; i < 8; ++i) {
+            victims.add(new Person("test", "test", "test_" + i + "@res.ch"));
+        }
+        try (OutputStreamWriter writer = new OutputStreamWriter(
+                new FileOutputStream(dirPath + "/victims.json"), StandardCharsets.UTF_8)) {
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(victims, writer);
+        } catch (IOException e) {
             e.printStackTrace();
-            fail();
+        }
+
+        // Create messages.utf8
+        try (PrintWriter writer = new PrintWriter(
+                new OutputStreamWriter(new FileOutputStream(dirPath + "/messages.utf8"),
+                        StandardCharsets.UTF_8))) {
+
+            for (int i = 0; i < 5; ++i) {
+                writer.print("Subject: test_" + i + "\r\nThis is a simple message\r\n==\r\n");
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Create config.properties
+        try (PrintWriter writer = new PrintWriter(
+                new OutputStreamWriter(new FileOutputStream(dirPath + "/config.properties"),
+                        StandardCharsets.UTF_8))) {
+
+            writer.println("smtpServerAddress=localhost");
+            writer.println("smtpServerPort=4224");
+            writer.println("numberOfGroups=2");
+            writer.println("witnessesToCC=test_cc@res.ch");
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
- */
 
+    @Test
+    public void creationShouldThrowsWithNullParameter() {
+        System.out.println("Throws NullPointerException because param is null");
+        assertThrows(NullPointerException.class, () -> {
+            new PrankGenerator(null);
+        });
+    }
+
+    @Test
+    public void itShouldGeneratePrankedMails() {
+        try {
+            ConfigManager config = new ConfigManager(dirPath);
+
+            PrankGenerator generator = new PrankGenerator(config);
+            List<Mail> pranks = generator.generateMails();
+
+            List<String> valid_addresses = new ArrayList<>();
+            for (Person p : config.getVictims()){
+                valid_addresses.add(p.getAddress());
+            }
+
+            System.out.println("pranks:");
+            for (Mail m : pranks) {
+                System.out.println("from: " + m.getFrom());
+                System.out.println("...");
+                System.out.println("body:" + m.getBody());
+
+
+
+            }
+
+
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    @AfterAll
+    public static void removeConfig() {
+        File dir = new File(dirPath);
+        try {
+            FileUtils.deleteDirectory(dir);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
