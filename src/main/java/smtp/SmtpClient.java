@@ -64,25 +64,29 @@ public class SmtpClient {
             // from
             writer.print("MAIL FROM: " + mail.getFrom() + "\r\n");
             writer.flush();
+            reader.readLine();
 
             // to
             for (String to : mail.getTo()) {
                 writer.print("RCPT TO: " + to + "\r\n");
                 writer.flush();
+                reader.readLine();
             }
 
             // cc
             for (String cc : mail.getCc()) {
                 writer.print("RCPT TO: " + cc + "\r\n");
                 writer.flush();
+                reader.readLine();
             }
 
             // data
             writer.print("DATA\r\n");
             writer.flush();
+            reader.readLine();
 
             // content-type
-            writer.print(mail.getContentType() + "\r\n");
+            writer.print("Content-Type: " + mail.getContentType() + "\r\n");
 
             // body-from
             writer.print("From: " + mail.getFrom() + "\r\n");
@@ -113,6 +117,7 @@ public class SmtpClient {
             // end-body
             writer.print("\r\n.\r\n");
             writer.flush();
+            System.out.println(reader.readLine());
 
             // display mail
             System.out.println("Message send:");

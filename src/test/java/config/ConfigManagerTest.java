@@ -220,7 +220,6 @@ public class ConfigManagerTest {
 
     @Test
     public void loadPropertiesShouldThrowWithInvalidNumberOfGroups() {
-
         // Create config.properties
         try (PrintWriter writer = new PrintWriter(
                 new OutputStreamWriter(new FileOutputStream(dirPath + "/config.properties"),
