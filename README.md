@@ -145,6 +145,10 @@ Cette classe permet de lancer notre programme (entry point).
 
 
 
+La plupart de ces classes ont été testées. Ces tests se trouvent dans le dossier `src/test/java`. En ce qui concerne les tests pour l'envoi des emails, ceux-ci ont été réalisé à la main.
+
+
+
 ### Exemple de dialogue
 
 Exemple avec deux pranks envoyés lors d'une connexion.
