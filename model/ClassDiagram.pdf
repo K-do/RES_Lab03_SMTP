@@ -1,0 +1,621 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [-3 -3 4740 1891]
+/Contents 4 0 R
+/Resources 6 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 5 0 R
+>>
+stream
+q
+2.8346457 0 0 -2.8346457 0 1891 cm
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+390 200 m 530 200 l S
+410 192 m 390 200 l 410 208 l S
+510 380 m 380 380 l S
+400 372 m 380 380 l 400 388 l S
+690 320 m 690 230 l S
+698 250 m 690 230 l 682 250 l S
+530 130 m 390 130 l S
+410 122 m 390 130 l 410 138 l S
+0 J
+[7] 0 d
+990 490 m 1060 490 l S
+2 J
+[] 0 d
+1040 498 m 1060 490 l 1040 482 l S
+0 J
+[7] 0 d
+620 540 m 700 540 l S
+2 J
+[] 0 d
+680 548 m 700 540 l 680 532 l S
+0 J
+[7] 0 d
+470 540 m 380 540 l S
+2 J
+[] 0 d
+400 532 m 380 540 l 400 548 l S
+0 J
+[7] 0 d
+580 510 m 580 450 l S
+2 J
+[] 0 d
+588 470 m 580 450 l 572 470 l S
+0 J
+[7] 0 d
+840 380 m 1060 380 l S
+2 J
+[] 0 d
+1040 388 m 1060 380 l 1040 372 l S
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+1060 260 m 1650 260 l 1650 497 l 1060 497 l 1060 260 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+1060 260 m 1650 260 l 1650 497 l 1060 497 l 1060 260 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 1342 282 cm
+(Mail) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+1060 295 m 1650 295 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 310 cm
+(- from : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 324 cm
+(- to : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 338 cm
+(- cc : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 352 cm
+(- subject : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 366 cm
+(- contentType : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 380 cm
+(- body : String) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+1060 389 m 1650 389 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 404 cm
+(+ Mail \(from : String, to : List<String>, cc : List<String>, subject : String, contentType : String, body : ...) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 418 cm
+(+ getFrom \(\) : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 432 cm
+(+ getTo \(\) : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 446 cm
+(+ getCc \(\) : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 460 cm
+(+ getSubject \(\) : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 474 cm
+(+ getContentType \(\) : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 1068 488 cm
+(+ getBody \(\) : String) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+30 100 m 390 100 l 390 253 l 30 253 l 30 100 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+30 100 m 390 100 l 390 253 l 30 253 l 30 100 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 190 122 cm
+(Person) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+30 135 m 390 135 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 38 150 cm
+(- address : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 38 164 cm
+(- firstName : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 38 178 cm
+(- lastName : String) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+30 187 m 390 187 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 38 202 cm
+(+ Person \(address : String, firstName : String, lastName : Str...) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 38 216 cm
+(+ getAddress \(\) : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 38 230 cm
+(+ getFirstName \(\) : void) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 38 244 cm
+(+ getLastName \(\) : void) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+50 290 m 380 290 l 380 625 l 50 625 l 50 290 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+50 290 m 380 290 l 380 625 l 50 625 l 50 290 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 171 312 cm
+(ConfigManager) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+50 325 m 380 325 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 58 340 cm
+(- smtpServAddress : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 354 cm
+(- smtpServPort : int) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 368 cm
+(- nbGroups : int) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 382 cm
+(- victims : List<Person>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 396 cm
+(- messages : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 410 cm
+(- addressesToCc : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 424 cm
+(- CONFIG_FILENAME : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 438 cm
+(- VICTIMS_FILENAME : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 452 cm
+(- MESSAGES_FILENAME : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 466 cm
+(- MESSAGE_SEPARATOR : String) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+50 475 m 380 475 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 58 490 cm
+(+ ConfigManager \(String : dirPath\)) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 504 cm
+(+ getVictims \(\) : List<Person>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 518 cm
+(+ getMessages \(\) : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 532 cm
+(+ getAddressesToCc \(\) : List<String>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 546 cm
+(+ getSmtpServAddress \(\) : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 560 cm
+(+ getSmtpServPort \(\) : int) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 574 cm
+(+ getNbGroups \(\) : int) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 588 cm
+(- loadProperties \(filename : String\) : void) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 602 cm
+(- loadVictims \(filename : String\) : void) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 58 616 cm
+(- loadMessages \(filename : String\) : void) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+530 100 m 830 100 l 830 225 l 530 225 l 530 100 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+530 100 m 830 100 l 830 225 l 530 225 l 530 100 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 662 122 cm
+(Group) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+530 135 m 830 135 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 538 150 cm
+(- sender : Person) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 538 164 cm
+(- recipients : List<Person>) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+530 173 m 830 173 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 538 188 cm
+(+ Group \(sender : Person, recipients : List<Perso...) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 538 202 cm
+(+ getSender \(\) : Person) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 538 216 cm
+(+ getRecipients \(\) : List<Person>) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+510 320 m 840 320 l 840 445 l 510 445 l 510 320 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+510 320 m 840 320 l 840 445 l 510 445 l 510 320 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 629 342 cm
+(PrankGenerator) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+510 355 m 840 355 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 518 370 cm
+(- configManager : ConfigManager) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+510 379 m 840 379 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 518 394 cm
+(+ PrankGenerator \(config : ConfigManager\)) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 518 408 cm
+(+ generateMails \(\) : List<Mail>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 518 422 cm
+(- generateGroups \(\) : List<Group>) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 518 436 cm
+(- generatePrank \(group : Group, message : String\) : Mail) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+700 470 m 990 470 l 990 581 l 700 581 l 700 470 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+700 470 m 990 470 l 990 581 l 700 581 l 700 470 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 813 492 cm
+(SmtpClient) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+700 505 m 990 505 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 708 520 cm
+(- servAddress : String) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 708 534 cm
+(- servPort : int) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+700 543 m 990 543 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F2 12 Tf
+1 0 0 -1 708 558 cm
+(+ SmtpClient \(servAddress : String, servPort : in...) Tj
+ET Q
+q BT
+/F2 12 Tf
+1 0 0 -1 708 572 cm
+(+ send \(mails : List<Mail>\) : void) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+470 510 m 620 510 l 620 565 l 470 565 l 470 510 l h f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+470 510 m 620 510 l 620 565 l 470 565 l 470 510 l h S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F1 12 Tf
+1 0 0 -1 515 532 cm
+(MailRobot) Tj
+ET Q
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+470 545 m 620 545 l S
+470 555 m 620 555 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F3 14 Tf
+1 0 0 -1 393 188 cm
+(2..*) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 394 222 cm
+(-victim) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 517 192 cm
+(1) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 395 401 cm
+(< get config with) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 483 372 cm
+(0..*) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 385 372 cm
+(1) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 697 282 cm
+(concerns ^) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 677 312 cm
+(1) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 663 248 cm
+(1..*) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 517 122 cm
+(1) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 395 122 cm
+(1) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 391 154 cm
+(-sender) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 1009 506 cm
+(use) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 665 558 cm
+(use) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 430 558 cm
+(use) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 585 498 cm
+(use) Tj
+ET Q
+q BT
+/F3 14 Tf
+1 0 0 -1 950 398 cm
+(use) Tj
+ET Q
+1 0.9686275 0.8823529 rg 1 0.9686275 0.8823529 RG
+0 0 m 0 30 l 75 30 l 95 30 105 20 105 0 c 0 0 l f
+1.2 w
+0.254902 0.254902 0.254902 rg 0.254902 0.254902 0.254902 RG
+0 0 m 0 30 l 75 30 l 95 30 105 20 105 0 c 0 0 l S
+1 w
+0.2509804 0.2509804 0.2509804 rg 0.2509804 0.2509804 0.2509804 RG
+q BT
+/F4 16 Tf
+1 0 0 -1 5 22 cm
+(RES_Lab03) Tj
+ET Q
+0 0 m 1669 0 l 1669 664 l 0 664 l 0 0 l h S
+Q
+endstream
+endobj
+5 0 obj
+10602
+endobj
+6 0 obj
+<<
+ /ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+ /Font <<
+  /F1 << /Type /Font /Subtype /TrueType /BaseFont /Ubuntu-Bold >>
+  /F2 << /Type /Font /Subtype /TrueType /BaseFont /Ubuntu >>
+  /F3 << /Type /Font /Subtype /TrueType /BaseFont /Ubuntu >>
+  /F4 << /Type /Font /Subtype /TrueType /BaseFont /Ubuntu >>
+ >>
+>>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000223 00000 n 
+0000010878 00000 n 
+0000010899 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+11230
+%%EOF

@@ -8,23 +8,23 @@ Date: 29.04.2021
 
 ## Description du projet
 
-Ce laboratoire a été réalisé dans le cadre d'un cours de réseaux (RES) suivi à la HEIG-VD, une Haute-École située en Suisse.
+Ce laboratoire a été réalisé dans le cadre d'un cours de réseaux (RES) suivi à la [HEIG-VD](https://heig-vd.ch/).
 
 Le but de ce laboratoire est de développer une application client (TCP) en Java qui va utiliser une Socket API pour communiquer avec un serveur SMTP.
 
-Cette application consiste en l'envoi de pranks par email à différents groupes contenant une liste de victimes.
+Cette application consiste en l'envoi de pranks par email à différents groupes de personnes.
 
 
 
 ## Instructions pour la configuration du serveur SMTP fictif avec Docker
 
-Dans ce laboratoire, il nous a été recommandé d'utiliser MockMock server sur GitHub. Il disponible sur le lien suivant: https://github.com/tweakers/MockMock.  C'est un serveur SMTP multi-plateforme permettant de tester si des emails sont envoyés sans les envoyer réellement. Il nous fournit une interface web qui ressemble à une boîte mail nous permettant de consulter ce qu'on aurait envoyé si nous dirigions nos emails vers de vrais clients. Cette interface web ne nous permet pas d'envoyer des emails.
+### MockMock server sans Docker
 
-Pour installer MockMock server, il faut cloner le repos se trouvant sur le lien mentionné plus haut avec la commande `git clone` dans un terminal sur notre machine. Ensuite, il faut mettre à jour le pom.xml car une dépendance n'est plus à jour. Pour se faire, il suffit d'ouvrir le pom.xml et de remplacer le plugin contenant le groupId ***org.dstovall*** par ***com.jolira***. 
+Dans ce laboratoire, il nous a été recommandé d'utiliser [MockMock](https://github.com/tweakers/MockMock) server sur GitHub. C'est un serveur SMTP multi-plateforme permettant de tester si des emails sont envoyés sans les transmettre réellement. Il nous fournit une interface web qui ressemble à une boîte mail nous permettant de consulter ce qu'on aurait envoyé si nous dirigions nos emails vers de vrais clients. Cette interface web ne nous permet pas d'envoyer des emails.
+
+Pour installer MockMock server, il faut cloner le repos se trouvant sur le lien mentionné plus haut avec la commande `git clone` dans un terminal sur votre machine. Ensuite, il faut mettre à jour le pom.xml car une dépendance n'est plus à jour. Pour se faire, il suffit d'ouvrir le pom.xml et de remplacer le plugin contenant le groupId ***org.dstovall*** par ***com.jolira***. 
 
 ![image-20210429101509133](figures/image-20210429101509133.png)
-
-Il faut donc remplacer ce qui est en rouge sur l'image par ce qui est en vert.
 
 De plus, il faut supprimer les différentes lignes en rouge ci-dessous:
 
@@ -34,15 +34,17 @@ Pour démarrer le serveur, il faut ouvrir un terminal à l'emplacement des fichi
 
 Lorsque le serveur est démarré, la boîte mail du serveur MockMock peut être consultée dans un navigateur en tapant `localhost:8282`.  Si un autre port que le 8282 souhaite être utilisé, il faut relancer le fichier *.jar* avec la commande `java -jar MockMock-1.4.0.one-jar.jar -h <port>` en remplaçant *<port>* par le port souhaité.
 
-![image-20210429170003485](figures/image-20210429170003485.png)
-
-Voici à quoi ressemble l'interface web lorsqu'elle est lancée. Celle-ci peut directement être utilisée avec notre programme.
-
-Si l'on souhaite implémenter le serveur MockMock avec Docker...........
+![image-20210430155017934](figures/image-20210430155017934.png)
 
 
 
-##### TODO:  Comment installer mockmock + docker
+### MockMock server avec Docker
+
+Pour exécuter MockMock avec Docker, il suffit d'exécuter les deux scripts situé dans le dossier *docker*. 
+
+Premièrement, il faut exécuter le script `build-image.sh` en veillant à se situer dans le dossier *docker*.  Ce script permet de constuire l'image Docker **mockmockserver**.
+
+Deuxièmement, il faut exécuter le script `run-container.sh`. Ce script permet de créer un container correspondant à l'image **mockmockserver** en arrière plan. Les ports du conteneur sont mappés avec les mêmes ports que l'hôte. Pour accéder à la boîte mail, il suffit d'utiliser le port **8282**. Pour communiquer avec le serveur SMTP, il suffit d'utiliser le port **2525**.
 
 
 
@@ -56,7 +58,7 @@ Ce fichier contient la configuration principale du programme.
 
 ![](figures/image-20210429172627885.png)
 
-**smtpServerAddress**: permet de spécifier l'adresse du serveur SMTP. Si vous souhaitez utiliser le serveur MockMock, spécifier `localhost`. 
+**smtpServerAddress**: permet de spécifier l'adresse IP du serveur SMTP. Si vous souhaitez utiliser le serveur MockMock, spécifiez `localhost`. 
 :warning: Ce champ est obligatoire. 
 
 
@@ -67,11 +69,11 @@ Ce fichier contient la configuration principale du programme.
 
 
 **numberOfGroups**: permet de spécifier le nombre de groupe que l'on souhaite. Un groupe est composé au minimum d'un envoyeur et de deux victimes donc de trois personnes. Les différents rôles seront attribués aléatoirement par le programme.
-:warning: Ce champ est obligatoire.
+:warning: Ce champ est obligatoire et il doit être strictement plus grand que 0.
 
 
 
-**witnessesToCC**: permet de spécifier l'adresse ou les adresses des personnes qui devraient recevoir le email en copie. Ce champ n'est pas obligatoire. Si vous spécifiez deux emails ou plus, il faut qu'ils soient séparés par une virgule sans aucun espace.
+**witnessesToCC**: permet de spécifier l'adresse ou les adresses emails des personnes qui devraient recevoir l'email en copie. Ce champ n'est pas obligatoire. Si vous spécifiez deux emails ou plus, il faut qu'ils soient séparés par une virgule sans aucun espace.
 
  
 
@@ -81,7 +83,7 @@ Ce fichier contient la liste des différents messages que l'on souhaite envoyer.
 
 ![image-20210429182241329](figures/image-20210429182241329.png)
 
-Chaque mail doit être séparé par les deux caractères `==` comme dans l'exemple ci-dessus. Le *Subject* correspond à l'objet du email. Chaque email sera automatiquement signé par le nom et prénom de la victime choisie aléatoirement.
+Chaque message doit être séparé par les deux caractères `==` comme dans l'exemple ci-dessus. `Subject:` permet de spécifier l'objet du mail et doit figurer au début du message. Chaque email sera automatiquement signé par le nom et prénom de l'envoyeur choisi aléatoirement.
 
 
 
@@ -97,7 +99,7 @@ Le format doit toujours être respecté et il doit y avoir au moins trois victim
 
 **lastname**: le nom de la victime
 
-**address**: le email de la victime
+**address**: l'email de la victime
 
 
 
@@ -109,7 +111,7 @@ Lorsque ces fichiers sont correctement configurés, il suffit de lancer le progr
 
 Voici le diagramme de notre programme:
 
-![](figures/test.png)
+![image-20210430160703814](figures/image-20210430160703814.png)
 
 
 
@@ -123,25 +125,77 @@ Cette classe nous permet de créer un groupe de personnes contant un envoyeur (s
 
 ### Mail
 
-Cette classe nous permet de créer un email. Celui-ci contient le email du sender (from), le ou les emails des receveurs (to), le ou les emails des personnes en copie (cc), l'objet du email (subject), le contenu du mail (body) ainsi que le contentType qui permet de spécifier le type de média internet du contenu du message. Dans notre cas, nous utilisons un `text/plain` et le charset est `utf-8`.
+Cette classe nous permet de créer un email. Celui-ci contient l'email du sender (from), le ou les emails des receveurs (to), le ou les emails des personnes en copie (cc), l'objet de l'email (subject), le contenu de l'email (body) ainsi que le contentType qui permet de spécifier le type de média internet du contenu du message. Dans notre cas, nous utilisons un `text/plain` avec l'encodage `utf-8`.
 
 ### ConfigManager
 
-Cette classe nous permet de configurer le programme avec ce que contient le dossier *config* principal. On va obtenir les données de configurations. Il nous permet notamment de regrouper les différentes victimes et les messages. 
+Cette classe nous permet de configurer le programme avec ce que contient le dossier *config* principal. Il nous permet notamment de spécifier les victimes et le messages utilisés.
 
 ### PrankGenerator
 
-Cette classe permet de générer les différents pranks que nous allons envoyer. On implémente la logique métier spécifique à l'application, les spécifications fonctionnelles.  Pour se faire, elle génère tout d'abord les différents emails, groupes et pranks. 
+Cette classe permet de générer les différents pranks que nous allons envoyer. Elle implémente la logique métier spécifique à l'application et les spécifications fonctionnelles. Pour se faire, elle génère les différents emails, groupes et pranks. 
 
 ### SmtpClient
 
-Cette classe implémente le protocole SMTP et envoie des emails. C'est ici que le client va parler avec le serveur en lui envoyant des requêtes et en obtenant ses réponses tout en respectant les conventions du protocole SMTP.
+Cette classe implémente le protocole SMTP et envoie des emails. C'est ici que le client va parler avec le serveur en lui envoyant des requêtes et en obtenant ses réponses tout en respectant les conventions du protocole SMTP. Une seule connexion est établie et tous les emails sont envoyés lors de cette connexion.
 
 ### MailRobot
 
-Cette classe permet de lancer notre programme.
+Cette classe permet de lancer notre programme (entry point).
 
 
 
-##### todo: inclure des exemples de dialogues entre client et serveur????
+### Exemple de dialogue
+
+Exemple avec deux pranks envoyés lors d'une connexion.
+
+```bash
+      S: 220 bb928a7eb08a ESMTP MockMock SMTP Server version 1.4
+      C: EHLO TEST
+      S: 250-bb928a7eb08a
+      S: 250-8BITMIME
+      S: 250 OK
+      C: MAIL FROM: test@test.com
+      S: 250 OK
+      C: RCPT TO: test1@test.com
+      S: 250 OK
+      C: RCPT TO: test2@test.com
+      S: 250 OK
+      C: DATA
+      S: 354 End data with <CR><LF>.<CR><LF>
+      C: Content-Type: text/plain; charset="utf-8"
+      C: From: test@test.com
+      C: To: test1@test.com
+      C: Cc: test2@test.com
+      C: Subject: =?utf-8?B?VmlydXM=?=
+      C: Bonjour,
+      C: Je vous envoie ce mail pour vous informer que votre boîte mail a été piratée.
+      C: Meilleures salutations,
+      C:
+      C: Test Test
+      C: .
+      S: 250 OK
+      C: MAIL FROM: test3@test.com
+      S: 250 OK
+      C: RCPT TO: test4@test.com
+      S: 250 OK
+      C: RCPT TO: test5@test.com
+      S: 250 OK
+      C: DATA
+      S: 354 End data with <CR><LF>.<CR><LF>
+      C: Content-Type: text/plain; charset="utf-8"
+      C: From: test3@test.com
+      C: To: test4@test.com
+      C: Cc: test5@test.com
+      C: Subject: =?utf-8?B?VmlydXM=?=
+      C: Bonjour,
+      C: Je vous envoie ce mail pour vous informer que votre boîte mail a été piratée.
+      C: Meilleures salutations,
+      C:
+      C: Test3 Test3
+      C: .
+      S: 250 OK
+      C: QUIT
+      S: 221 Bye
+```
 
