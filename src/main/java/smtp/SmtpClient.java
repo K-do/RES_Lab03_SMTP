@@ -47,7 +47,7 @@ public class SmtpClient {
         reader.readLine();
 
         // Start of SMTP Session
-        writer.print("EHLO TEST\r\n");
+        writer.print("EHLO " + servAddress + "\r\n");
         writer.flush();
 
         // Server response
